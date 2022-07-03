@@ -1,5 +1,5 @@
 /** @format */
-
+import {Dropdown} from 'react-bootstrap'
 export const Navigation = (props) => {
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
@@ -47,6 +47,15 @@ export const Navigation = (props) => {
                 Donar SignIn
               </a>
             </li>
+               <Dropdown>
+  <Dropdown.Toggle style={{color:'#05386B'}} id="dropdown-basic">
+   <i className="fas fa-user">hello</i>
+  </Dropdown.Toggle>
+  <Dropdown.Menu>
+    <Dropdown.Item href="/hello">1</Dropdown.Item>
+    <Dropdown.Item href="/hey">2</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
             <li>
               <a href="/login" className="page-scroll">
                 Donar SignUp
