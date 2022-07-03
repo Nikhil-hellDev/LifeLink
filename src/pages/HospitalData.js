@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import { TabContext } from '@mui/lab';
@@ -8,6 +8,8 @@ import { DonarList } from '../components/donar';
 import { SeekerList } from '../components/seeker';
 
 export const HospitalData = () => {
+
+
   const [value, setValue] = React.useState('1');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {

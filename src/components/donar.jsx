@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import {postData} from "../FetchServices";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -28,67 +29,57 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(
-  sno: number,
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-  gender: string
-) {
-  return { sno, name, calories, gender, fat, carbs, protein };
-}
 
-const rows = [
-  createData(
-    1,
-    "Ramesh Sharma",
-    19,
-    "Male",
-    "nikhil@gmail.com",
-    7847847858,
-    "12-03-2003"
-  ),
-  createData(
-    2,
-    "Savitri Devi",
-    37,
-    "Female",
-    "pankaj@gmail.com",
-    9857453757,
-    "23-04-1985"
-  ),
-  createData(
-    3,
-    "Raman Sholey",
-    62,
-    "Male",
-    "naman@gmail.com",
-    8765897624,
-    "02-07-1960"
-  ),
-  createData(
-    4,
-    "Kani Roni",
-    35,
-    "Female",
-    "yash@gmail.com",
-    6904594547,
-    "28-09-1987"
-  ),
-  createData(
-    5,
-    "Sumit Champak",
-    56,
-    "Male",
-    "mahi@gmail.com",
-    9367435633,
-    "19-12-1966"
-  ),
-];
 
 export const DonarList = () => {
+
+  const [DonarList, setDonarList] = useState([]);
+
+  useEffect(() => {
+  const HospitalId = localStorage.getItem('HospitalId');
+  console.log("HospitalId",HospitalId)
+  getData(HospitalId)
+
+  },[])
+
+ const getData =async (HospitalId)=> {
+  let body={
+    'HospitalId':HospitalId
+ }
+ console.log("body",body);
+ let result=await postData('Hospital/GetAllDonarsList',body)
+ console.log("result",result);
+  if(result)
+  {
+    setDonarList(result);
+   console.log('data recived successfully')
+  //  this.props.navigation.navigate('login')     
+  }
+  else{
+    console.log('data not recieved ')
+  }  
+  }
+   
+  const HadleDelete=async (e,id) =>{
+
+    e.preventDefault()
+    let body={
+      'DonarId':id
+   }
+   console.log("body",body);
+   let result=await postData('Donar/DeleteDonar',body)
+   console.log("result",result);
+   if(result)
+  {
+   console.log(result)
+   getData()
+  //  this.props.navigation.navigate('login')     
+  }
+  else{
+    console.log('data not recieved ')
+  }  
+  }
+
   return (
     <>
       <TableContainer component={Paper}>
@@ -102,19 +93,25 @@ export const DonarList = () => {
                 Donar Name
               </StyledTableCell>
               <StyledTableCell style={{ fontSize: "13px" }} align="left">
-                Age
+                Email Address
+              </StyledTableCell>
+              <StyledTableCell style={{ fontSize: "13px" }} align="left">
+              Contact No
+            </StyledTableCell>
+              <StyledTableCell style={{ fontSize: "13px" }} align="left">
+                Date Of Birth
               </StyledTableCell>
               <StyledTableCell style={{ fontSize: "13px" }} align="left">
                 Gender
               </StyledTableCell>
               <StyledTableCell style={{ fontSize: "13px" }} align="left">
-                Email Address
+              Adhaar No.
               </StyledTableCell>
               <StyledTableCell style={{ fontSize: "13px" }} align="left">
-                Contact No
+               Address
               </StyledTableCell>
               <StyledTableCell style={{ fontSize: "13px" }} align="left">
-                Date Of Birth
+               Last Update Date
               </StyledTableCell>
               <StyledTableCell style={{ fontSize: "13px" }} align="left">
                 Actions
@@ -122,17 +119,20 @@ export const DonarList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.name}>
-                <StyledTableCell>{row.sno}</StyledTableCell>
+            {DonarList.map((row,index) => (
+              <StyledTableRow key={row.DonarId}>
+              <StyledTableCell>{index+1}</StyledTableCell>
+              <StyledTableCell>{row.DonarName}</StyledTableCell>
+                <StyledTableCell>{row.DonarEmail}</StyledTableCell>
                 <StyledTableCell component="th" scope="row">
-                  {row.name}
+                  {row.DonarNo}
                 </StyledTableCell>
-                <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                <StyledTableCell align="left">{row.gender}</StyledTableCell>
-                <StyledTableCell align="left">{row.fat}</StyledTableCell>
-                <StyledTableCell align="left">{row.carbs}</StyledTableCell>
-                <StyledTableCell align="left">{row.protein}</StyledTableCell>
+                <StyledTableCell align="left">{row.DonarDateOfBirth}</StyledTableCell>
+                <StyledTableCell align="left">{row.DonarGender}</StyledTableCell>
+                <StyledTableCell align="left">{row.DonarAdhaar}</StyledTableCell>
+                <StyledTableCell align="left">{row.DonarAddress}</StyledTableCell>
+               
+                <StyledTableCell align="left">{row.UpdateDate.split("T")[0]}</StyledTableCell>
                 <StyledTableCell align="left">
                   <i
                     class="fa fa-pencil-square-o"
@@ -144,6 +144,7 @@ export const DonarList = () => {
                     class="fa fa-trash"
                     aria-hidden="true"
                     style={{ fontSize: "22px", color: "red" }}
+                    onClick={(e)=>HadleDelete(e,row.DonarId)}
                   ></i>
                 </StyledTableCell>
               </StyledTableRow>
