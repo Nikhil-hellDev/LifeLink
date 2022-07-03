@@ -243,6 +243,9 @@ export const SignIn = () => {
                 />
                 <TextField
                   id="outlined-select-currency"
+                  autoFocus
+                  required
+                  fullWidth
                   select
                   label="Select"
                   value={currency}
