@@ -53,7 +53,7 @@ export const HospitalSignIn = (props) => {
   localStorage.setItem('HospitalId',result[0].HospitalId);
      console.log('data recived successfully');
      
-     window.location = '/HospitalData';
+     window.location = '/DonarList';
     }
     else{
       console.log('data not recieved ')

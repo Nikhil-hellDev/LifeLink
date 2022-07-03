@@ -229,7 +229,7 @@ export const HospitalSignUp = (props) => {
                   </Grid>
                   <Grid item>
                     <Link href="/HospitalSignIn" variant="body2">
-                      {"Don't have an account? Sign Up"}
+                      {"If You have an account? Sign Up"}
                     </Link>
                   </Grid>
                 </Grid>

@@ -82,7 +82,7 @@ export const DonarList = () => {
 
   return (
     <>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} style={{marginTop:"5%"}}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>

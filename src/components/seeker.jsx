@@ -77,7 +77,7 @@ export const SeekerList = () => {
 
   return (
     <>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} style={{marginTop:"5%"}}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -85,7 +85,7 @@ export const SeekerList = () => {
             S.No.
           </StyledTableCell>
           <StyledTableCell style={{ fontSize: "13px" }}>
-            Donar Name
+            Seeker Name
           </StyledTableCell>
           <StyledTableCell style={{ fontSize: "13px" }} align="left">
             Email Address

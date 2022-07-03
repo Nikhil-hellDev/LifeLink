@@ -50,7 +50,7 @@ export const DonarSignIn = (props) => {
   localStorage.setItem('DonarId',result[0].DonarId);
      console.log('data recived successfully')
      setStyleValue({ ...styleValue, display: 'none'});
-    // this.props.navigation.navigate('login')     
+     window.location = '/DonarProfile';
     }
     else{
       console.log('data not recieved ')

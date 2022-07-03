@@ -291,7 +291,7 @@ export const DonarSignUp = (props) => {
                   </Grid>
                   <Grid item>
                     <Link href="/DonarSignIn" variant="body2">
-                      {"Don't have an account? Sign Up"}
+                      {"If you have an account? Sign In"}
                     </Link>
                   </Grid>
                 </Grid>
