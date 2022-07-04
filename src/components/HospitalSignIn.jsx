@@ -72,9 +72,9 @@ export const HospitalSignIn = (props) => {
     item
     xs={false}
     sm={4}
-    md={7}
+    md={8}
     sx={{
-      backgroundImage: "url(img/image1.jpg)",
+      backgroundImage: "url(img/DonationHospital.jpg)",
       backgroundRepeat: "no-repeat",
       backgroundColor: (t) =>
         t.palette.mode === "dark"
@@ -88,7 +88,7 @@ export const HospitalSignIn = (props) => {
     item
     xs={12}
     sm={8}
-    md={5}
+    md={4}
     component={Paper}
     elevation={6}
     square

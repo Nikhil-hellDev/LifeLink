@@ -19,12 +19,12 @@ import { MenuItem } from "@material-ui/core";
 
 const theme = createTheme();
 
-export const DonarSignUp = (props) => {
+export const SeekerSignUp = (props) => {
 
 
   const [hospitalList, setHospitalList] = useState([]);
   const [inputValues, setInputValues] = useState({
-    donarFirstName:'',donarLastName:'', donarEmail:'', donarNo:'',donarDateOfBirth:'',donarGender:'',donarAdhaar:'',donarAddress:'',hospitalId:'',donarPassword:''
+    seekerFirstName:'',seekerLastName:'',seekerEmail:'',seekerNo:'',seekerDateOfBirth:'',seekerGender:'',seekerAdhaar:'',seekerAddress:'',hospitalId:'',zipcode:''
   });
   const [styleValue,setStyleValue]=useState({display:"none",server:"error",text:"Registration Failed! Something went Wrong"})
 
@@ -57,18 +57,17 @@ export const DonarSignUp = (props) => {
    
     console.log(inputValues);
     let body={
-        'DonarName':inputValues.donarFirstName+' '+inputValues.donarLastName,
-        'DonarEmail':inputValues.donarEmail,
-        'DonarNo':inputValues.donarNo,
-        'DonarDateOfBirth':inputValues.donarDateOfBirth,
-        'DonarGender':inputValues.donarGender,
-        'DonarAdhaar':inputValues.donarAdhaar,
-        'DonarAddress':inputValues.donarAddress,
-        'HospitalId':inputValues.hospitalId,
-        'DonarPassword':inputValues.donarPassword
+        'SeekerName':inputValues.seekerFirstName+' '+inputValues.seekerLastName,
+        'SeekerEmail':inputValues.seekerEmail,
+        'SeekerNo':inputValues.seekerNo,
+        'SeekerDateOfBirth':inputValues.seekerDateOfBirth,
+        'SeekerGender':inputValues.seekerGender,
+        'SeekerAdhaar':inputValues.seekerAdhaar,
+        'SeekerAddress':inputValues.seekerAddress+','+inputValues.zipcode,
+        'HospitalId':inputValues.hospitalId
      }
      console.log("body",body);
-     let result=await postData('Donar/DonarRegistration',body)
+     let result=await postData('Seeker',body)
      console.log("result",result);
       if(result.length)
       {
@@ -130,11 +129,9 @@ export const DonarSignUp = (props) => {
                 alignItems: "center",
               }}
             >
-              <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
+              
               <Typography component="h1" variant="h5">
-                Donar Sign Up
+                <h3>Seeker Sign Up</h3>
               </Typography>
               <Box
                 component="form"
@@ -146,12 +143,12 @@ export const DonarSignUp = (props) => {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="donarFirstName"
+                  name="seekerFirstName"
                   required
                   fullWidth
                   onChange={handleOnChange}
-                  value={inputValues.donarFirstName}
-                  id="donarFirstName"
+                  value={inputValues.seekerFirstName}
+                  id="seekerFirstName"
                   label="Enter First Name"
                   autoFocus
                 />
@@ -161,10 +158,10 @@ export const DonarSignUp = (props) => {
                   required
                   fullWidth
                   onChange={handleOnChange}
-                  value={inputValues.donarLastName}
-                  id="donarLastName"
+                  value={inputValues.seekerLastName}
+                  id="seekerLastName"
                   label="Enter Last Name"
-                  name="donarLastName"
+                  name="seekerLastName"
                   autoComplete="family-name"
                 />
               </Grid>
@@ -174,10 +171,10 @@ export const DonarSignUp = (props) => {
                   required
                   fullWidth
                   onChange={handleOnChange}
-                  value={inputValues.donarEmail}
-                  id="donarEmail"
+                  value={inputValues.seekerEmail}
+                  id="seekerEmail"
                   label="Email Address"
-                  name="donarEmail"
+                  name="seekerEmail"
                   autoComplete="email"
                   autoFocus
                 />
@@ -189,10 +186,10 @@ export const DonarSignUp = (props) => {
                 fullWidth
                 type="number"
                 onChange={handleOnChange}
-                value={inputValues.donarNo}
-                id="donarNo"
+                value={inputValues.seekerNo}
+                id="seekerNo"
                 label="Enter Contact No"
-                name="donarNo"
+                name="seekerNo"
                 autoComplete="number"
                 autoFocus
               />
@@ -204,11 +201,11 @@ export const DonarSignUp = (props) => {
                   fullWidth
                   type="date"
                   onChange={handleOnChange}
-                  value={inputValues.donarDateOfBirth}
-                  id="donarDateOfBirth"
+                  value={inputValues.seekerDateOfBirth}
+                  id="seekerDateOfBirth"
                   label="Enter Date of birth"
-                  name="donarDateOfBirth"
-                  autoComplete="donarDateOfBirth"
+                  name="seekerDateOfBirth"
+                  autoComplete="seekerDateOfBirth"
                   autoFocus
                 />
                 </Grid>
@@ -218,11 +215,11 @@ export const DonarSignUp = (props) => {
                   required
                   fullWidth
                   onChange={handleOnChange}
-                  value={inputValues.donarGender}
-                  id="donarGender"
+                  value={inputValues.seekerGender}
+                  id="seekerGender"
                   label="Enter Gender"
-                  name="donarGender"
-                  autoComplete="donarDateOfBirth"
+                  name="seekerGender"
+                  autoComplete="seekerGender"
                   autoFocus
                 />
                 </Grid>
@@ -233,11 +230,11 @@ export const DonarSignUp = (props) => {
                 fullWidth
                 onChange={handleOnChange}
                 type="number"
-                value={inputValues.donarAdhaar}
-                id="donarAdhaar"
+                value={inputValues.seekerAdhaar}
+                id="seekerAdhaar"
                 label="Enter Adhaar Number"
-                name="donarAdhaar"
-                autoComplete="donarAdhaar"
+                name="seekerAdhaar"
+                autoComplete="seekerAdhaar"
                 autoFocus
               />
                 </Grid>
@@ -247,15 +244,27 @@ export const DonarSignUp = (props) => {
               required
               fullWidth
               onChange={handleOnChange}
-              value={inputValues.donarAddress}
-              id="donarAddress"
+              value={inputValues.seekerAddress}
+              id="seekerAddress"
               label="Enter Address"
-              name="donarAddress"
-              autoComplete="donarDateOfBirth"
+              name="seekerAddress"
+              autoComplete="seekerAddress"
               autoFocus
             />
             </Grid>
-            
+            <Grid item xs={12} sm={6}>
+            <TextField
+            margin="normal"
+            required
+            fullWidth
+            onChange={handleOnChange}
+        value={inputValues.zipcode}
+            name="zipcode"
+            label="Zipcode"
+            id="zipcode"
+            autoComplete="zipcode"
+          />
+                          </Grid>   
             <Grid item xs={12} sm={6}>
             <TextField
             style={{marginTop:"3%",marginBottom:"2%"}}
@@ -277,20 +286,7 @@ export const DonarSignUp = (props) => {
           }
           </TextField>
           </Grid>
-          <Grid item xs={12} sm={6}>
-          <TextField
-          margin="normal"
-          required
-          fullWidth
-          onChange={handleOnChange}
-      value={inputValues.donarPassword}
-          name="donarPassword"
-          label="Password"
-          type="password"
-          id="donarPassword"
-          autoComplete="current-password"
-        />
-                        </Grid>
+         
                 </Grid>
                 <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -303,7 +299,7 @@ export const DonarSignUp = (props) => {
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
         >
-          Sign Up
+          submit Request
         </Button>
                 <Grid container>
                   <Grid item xs>

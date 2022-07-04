@@ -68,10 +68,10 @@ export const DonarSignIn = (props) => {
   <Grid
     item
     xs={false}
-    sm={4}
-    md={7}
+    sm={9}
+    md={8}
     sx={{
-      backgroundImage: "url(img/image1.jpg)",
+      backgroundImage: "url(img/LoginImage.jpg)",
       backgroundRepeat: "no-repeat",
       backgroundColor: (t) =>
         t.palette.mode === "dark"
@@ -85,7 +85,7 @@ export const DonarSignIn = (props) => {
     item
     xs={12}
     sm={8}
-    md={5}
+    md={4}
     component={Paper}
     elevation={6}
     square

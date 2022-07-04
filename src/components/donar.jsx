@@ -34,15 +34,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export const DonarList = () => {
 
   const [DonarList, setDonarList] = useState([]);
+  const HospitalId = localStorage.getItem('HospitalId');
 
   useEffect(() => {
-  const HospitalId = localStorage.getItem('HospitalId');
-  console.log("HospitalId",HospitalId)
-  getData(HospitalId)
+  getData()
 
   },[])
 
- const getData =async (HospitalId)=> {
+ const getData =async ()=> {
   let body={
     'HospitalId':HospitalId
  }
@@ -134,12 +133,7 @@ export const DonarList = () => {
                
                 <StyledTableCell align="left">{row.UpdateDate.split("T")[0]}</StyledTableCell>
                 <StyledTableCell align="left">
-                  <i
-                    class="fa fa-pencil-square-o"
-                    aria-hidden="true"
-                    style={{ fontSize: "22px", color: "blue" }}
-                  ></i>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
+               
                   <i
                     class="fa fa-trash"
                     aria-hidden="true"

@@ -82,34 +82,35 @@
   ],
   "Testimonials": [
     {
-      "img": "img/testimonials/01.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "John Doe"
+      "img": "img/p1.jpg",
+      "text": "\"donating a kidney had made me more aware of my health. Now  I want to eat more healthily or drink less alcohol.In That LifeLink help me out to understand this think.\"",
+      "name": "Amit Jain"
     },
     {
-      "img": "img/testimonials/02.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "Johnathan Doe"
+      "img": "img/p2.jpg",
+      "text": "\"the experience of donating a organ had been extremely enriching and that I had, quite unexpectedly, gained a lot from it.LifeLink is working very great in that situtaion.\"",
+      "name": "Priyanka Sharma"
     },
-    {
-      "img": "img/testimonials/03.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "John Doe"
-    },
+    
     {
       "img": "img/testimonials/04.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "Johnathan Doe"
+      "text": "\"My body has been changed. I have become smart now. I could not work too much before the transplantation, but I do whatever I want without becoming tired..\"",
+      "name": "Katti Dope"
     },
     {
-      "img": "img/testimonials/05.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "img": "img/p3.jfif",
+      "text": "\"I felt that I was young. I was 50 years old, but I felt I was 25 years old after a dicided to donate organs it a very good think i advise all to do that.\"",
       "name": "John Doe"
     },
     {
       "img": "img/testimonials/06.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "Johnathan Doe"
+      "text": "\"I have positive thoughts and I feel that I am in peace and patiently follow my problems to be solved. I have become quite soft and put aside my anger and deal with my wife pretty well..\"",
+      "name": "Ravi karma"
+    },
+    {
+      "img": "img/testimonials/03.jpg",
+      "text": "\"I advised others to think about living donation and organ donation.LifeLink also aware proples to donate organs for others who need it so much.\"",
+      "name": "sam mailuer"
     }
   ],
   "Team": [

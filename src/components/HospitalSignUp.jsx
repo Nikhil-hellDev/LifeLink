@@ -79,7 +79,7 @@ export const HospitalSignUp = (props) => {
             sm={4}
             md={6}
             sx={{
-              backgroundImage: "url(img/image1.jpg)",
+              backgroundImage: "url(img/DonationHospital.jpg)",
               backgroundRepeat: "no-repeat",
               backgroundColor: (t) =>
                 t.palette.mode === "dark"

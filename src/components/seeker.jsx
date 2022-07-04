@@ -33,12 +33,13 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export const SeekerList = () => {
   const [SeekerList, setSeekerList] = useState([]);
 
-  useEffect(() => {
   const HospitalId = localStorage.getItem('HospitalId');
-  getData(HospitalId)
+
+  useEffect(() => {
+  getData()
   },[])
 
- const getData =async (HospitalId)=> {
+ const getData =async ()=> {
   let body={
     'HospitalId':HospitalId
  }
@@ -115,7 +116,7 @@ export const SeekerList = () => {
           </TableHead>
           <TableBody>
             {SeekerList.map((row,index) => (
-              <StyledTableRow key={row.DonarId}>
+              <StyledTableRow key={row.SeekerId}>
                 <StyledTableCell>{index+1}</StyledTableCell>
                 <StyledTableCell component="th" scope="row">
                   {row.SeekerName}
@@ -128,17 +129,12 @@ export const SeekerList = () => {
                 <StyledTableCell align="left">{row.SeekerAddress}</StyledTableCell>
                 <StyledTableCell align="left">{row.UpdateDate.split("T")[0]}</StyledTableCell>
                 <StyledTableCell align="left">
-                  <i
-                    class="fa fa-pencil-square-o"
-                    aria-hidden="true"
-                    style={{ fontSize: "22px", color: "blue" }}
-                  ></i>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
+                
                   <i
                     class="fa fa-trash"
                     aria-hidden="true"
                     style={{ fontSize: "22px", color: "red" }}
-                    onClick={(e)=>HadleDelete(e,row.DonarId)}
+                    onClick={(e)=>HadleDelete(e,row.SeekerId)}
                   ></i>
                 </StyledTableCell>
               </StyledTableRow>

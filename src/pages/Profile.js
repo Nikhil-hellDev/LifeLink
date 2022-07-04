@@ -1,11 +1,8 @@
 import React, { useState,useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+import MenuItem from "@material-ui/core/MenuItem";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -20,16 +17,21 @@ const theme = createTheme();
 
 export const DonarProfile = (props) => {
 
+  const [hospitalList, setHospitalList] = useState([]);
 
   const [inputValues, setInputValues] = useState({
-    donarFirstName:'naveen',donarLastName:'bansal', donarEmail:'naveen@gmail.com', donarNo:'564464654',donarDateOfBirth:'23/04/2000',donarGender:'Male',donarAdhaar:'448484848545',donarAddress:'Transport nager',hospitalId:3,donarPassword:'1254789'
+    donarFirstName:'',donarLastName:'', donarEmail:'', donarNo:'',donarDateOfBirth:'',donarGender:'',donarAdhaar:'',donarAddress:'',hospitalId:3,donarPassword:''
   });
   const [styleValue,setStyleValue]=useState({display:"none",server:"error",text:"Login Falied! check your Email Id or Password"})
 
   
   useEffect(() => {
-
     fetchData()
+
+if(localStorage.getItem("DonarId")){
+  var Donarid = localStorage.getItem("DonarId")
+  GetDonarData(Donarid)
+}
   }, []);
 
   const fetchData =async ()=> {
@@ -38,6 +40,7 @@ export const DonarProfile = (props) => {
     console.log("result for Hospital List",result);
      if(result.length)
      {
+      setHospitalList(result);
       console.log('data recived successfully')
      //  this.props.navigation.navigate('login')     
      }
@@ -49,6 +52,25 @@ export const DonarProfile = (props) => {
     const { name, value } = event.target;
     setInputValues({ ...inputValues, [name]: value });
   };
+
+  const GetDonarData = async(id)=>{
+    let body={
+      "DonarId":id
+    }
+    console.log("body",body);
+    let result=await postData('Donar/GetDonarData',body)
+     console.log("result",result);
+      if(result.length)
+      {
+        const val = result[0]
+        console.log('data recieved ')
+        setInputValues({ ...inputValues, donarFirstName:val.DonarName.split(" ")[0],donarLastName:val.DonarName.split(" ")[1],donarGender:val.DonarGender,hospitalId:val.HospitalId,donarEmail: val.DonarEmail,donarNo:val.DonarNo,donarDateOfBirth:val.DonarDateOfBirth,donarAddress:val.DonarAddress,donarAdhaar:val.DonarAdhaar,donarPassword:val.DonarPassword });
+      }
+      else
+      {
+        console.log('data not recieved ')
+      }
+  }
 
   const handleSubmit =async (event) => {
     event.preventDefault();
@@ -91,13 +113,13 @@ export const DonarProfile = (props) => {
   
     return (
       <ThemeProvider theme={theme}>
-        <Grid container component="main" sx={{ height: "80vh" }}>
+        <Grid container component="main" sx={{ height: "90vh" }}>
           <CssBaseline />
           
           <Grid
             item
             xs={10}
-            sm={6}
+            sm={8}
             md={12}
             component={Paper}
             elevation={6}
@@ -105,9 +127,9 @@ export const DonarProfile = (props) => {
           >
             <Box
               sx={{
-                m: 8,
-                my: 12,
-                mx: 6,
+                m: 10,
+                my: 14,
+                mx: 8,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -238,34 +260,26 @@ export const DonarProfile = (props) => {
               autoFocus
             />
             </Grid>
+        
+          <Grid item xs={12} sm={6}>
+          <TextField
+          margin="normal"
+          required
+          fullWidth
+          onChange={handleOnChange}
+      value={inputValues.donarPassword}
+          name="donarPassword"
+          label="Password"
+          
+          id="donarPassword"
+          autoComplete="current-password"
+        />
+      
+          </Grid>
                 </Grid>
               
               
                 
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  onChange={handleOnChange}
-              value={inputValues.donarPassword}
-                  name="donarPassword"
-                  label="Password"
-                  type="password"
-                  id="donarPassword"
-                  autoComplete="current-password"
-                />
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-                <Button
-                  type="submit"
-                  style={{ItemAlign:"center"}}
-                  variant="contained"
-                  sx={{ mt: 8, mb: 8 }}
-                >
-                Update
-                </Button>
                 
               </Box>
               <Alert variant="outlined" severity={styleValue.server} style={{display:styleValue.display}}>

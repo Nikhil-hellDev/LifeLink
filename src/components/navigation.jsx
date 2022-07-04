@@ -5,7 +5,7 @@ export const Navigation = (props) => {
 
   
 
-  if(!localStorage.getItem("HospitalId") && !localStorage.getItem("DonarId")){
+  if(localStorage.getItem("DonarId")){
     return(
       <nav id="menu" className="navbar navbar-default navbar-fixed-top">
         <div className="container">
@@ -42,18 +42,23 @@ export const Navigation = (props) => {
           </a>
         </li>
         <li>
+        <a href="/#Testimonials" className="page-scroll">
+          Reviews
+        </a>
+      </li>
+        <li>
           <a href="/#contact" className="page-scroll">
             Contact Us
           </a>
         </li>
         <li>
-          <a href="/DonarSignUp" className="page-scroll"> 
-            Donar Registration
+          <a href="/DonarProfile" className="page-scroll"> 
+            View Profile
           </a>
         </li>
         <li>
-          <a href="/HospitalSignUp" className="page-scroll">
-            Hospital Registration
+          <a href="/LogoutDonar" className="page-scroll">
+            Logout
           </a>
         </li>
           </ul>
@@ -101,6 +106,11 @@ export const Navigation = (props) => {
                   About us
                 </a>
               </li>
+              <li>
+              <a href="/#Testimonials" className="page-scroll">
+                Reviews
+              </a>
+            </li>
               <li>
                 <a href="/#contact" className="page-scroll">
                   Contact Us
@@ -169,10 +179,20 @@ export const Navigation = (props) => {
           </a>
         </li>
         <li>
+        <a href="/#Testimonials" className="page-scroll">
+          Reviews
+        </a>
+      </li>
+        <li>
           <a href="/#contact" className="page-scroll">
             Contact Us
           </a>
         </li>
+        <li>
+        <a href="/SeekerSignUp" className="page-scroll">
+          Seekers
+        </a>
+      </li>
         <li>
           <a href="/DonarSignUp" className="page-scroll"> 
             Donar Registration

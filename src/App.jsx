@@ -14,7 +14,7 @@ import { SeekerList } from "./components/seeker";
 import { HospitalData } from "./pages/HospitalData";
 import { LogoutHospital } from "./components/LogoutHospital";
 import {LogoutDonar} from "./components/LogoutDonar";
-
+import { SeekerSignUp } from "./components/SeekerSignUp";
 import "./App.css";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
@@ -31,6 +31,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="DonarSignIn" element={<DonarSignIn />} />
           <Route path="DonarSignUp" element={<DonarSignUp />} />
+          <Route path="SeekerSignUp" element={<SeekerSignUp />} />
           <Route path="LogoutHospital" element={<LogoutHospital/>}/>
           <Route path="LogoutDonar" element={<LogoutDonar/>}/>
           <Route path="DonarList" element={<DonarList />} />
